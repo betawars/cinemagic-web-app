@@ -11,16 +11,16 @@ export default function Header() {
         setIsOpen(!isOpen);
     };
     return (
-        <nav className="bg-[#c7b9d9] pt-4 pb-4 pr-0 pl-10 sticky top-0 z-50">
-            <div className="container mx-auto flex items-center justify-between">
-                <div className="container mx-auto flex items-center">
+        <nav className="bg-[#c7b9d9] p-4 sticky top-0 z-50">
+            <div id="nav-container" className="w-full mx-auto flex items-center">
+                <div id="app-icon-container" className=" w-full mx-auto flex justify-start items-center">
                     <Image
                         src={Logo}
                         alt="Logo"
                         width={50}
                         height={50}
                     />
-                    <div className="text-black text-xl font-bold">
+                    <div className="text-black ml-1 text-xl font-bold">
                         <Link href="/">CineMagic</Link>
                     </div>
                 </div>
