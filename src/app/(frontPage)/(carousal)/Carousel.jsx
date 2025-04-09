@@ -7,6 +7,7 @@ import "./Carousel.css";
 import Image from "next/image";
 
 export const Carousel = ({ data }) => {
+
   console.log(data)
   const [slide, setSlide] = useState(0);
   const nextSlide = () => {
@@ -70,11 +71,10 @@ export const Carousel = ({ data }) => {
     >
       <Arrow_left hover={hovered.toString()} onClick={prevSlide}/>
       {data.map((item, idx) => {
-        console.log(item)
         return (
           <Image
             key={idx}
-            src={item.urls}
+            src={`https://image.tmdb.org/t/p/w780${item}`}
             height={1000}
             width={1000}
             alt="car"
