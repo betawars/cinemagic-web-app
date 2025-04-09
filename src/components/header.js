@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import Logo from "../res/logo.png"
+import ThemeSwitch from "./themeSwitcher";
 
 export default function Header() {
 
@@ -45,8 +46,9 @@ export default function Header() {
                     </svg>
                 </button>
                 <div
-                    className={`lg:flex space-x-4 ${isOpen ? 'block' : 'hidden'} lg:block`}
+                    className={`lg:flex items-center space-x-4 ${isOpen ? 'block' : 'hidden'} lg:block`}
                 >
+                    <ThemeSwitch/>
                     <Link href="/" className="text-black hover:bg-gray-700 px-3 py-2 rounded-md">
                         Home
                     </Link>

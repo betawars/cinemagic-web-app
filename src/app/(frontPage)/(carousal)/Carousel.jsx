@@ -42,12 +42,13 @@ export const Carousel = ({ movieData, genreData }) => {
               </div>
               <div className="movie-genre-container">
                 {item.genre_ids.map((genre, idx) => {
-                  return (<div key={idx}>
-                    <p> {genreData[genre]}&nbsp;&nbsp; </p>
-                  </div>)
+                  return (
+                    <div key={idx} className="genre-chip">
+                      {genreData[genre]}
+                    </div>
+                  )
                 }
                 )}
-
               </div>
               <div className="movie-rating-container">
                 <BsStarFill/> &nbsp;

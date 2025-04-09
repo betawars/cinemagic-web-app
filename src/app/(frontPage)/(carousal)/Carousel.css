@@ -76,10 +76,37 @@
 
 .movie-desc-container {
   width: 100%;
-  height: 20%;
+  height: fit-content;
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  padding-left: 1rem;
+  color: black;
+  font-size: 1.5em;
+  overflow: hidden;
+
+  @media (min-width: 400px) {
+    font-size: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    font-size: 0.25rem;
+  }
+  
+  @media (min-width: 768px) {
+    font-size: 0.5rem;
+  }
+  
+  @media (min-width: 1024px) {
+    font-size: 1rem;
+  }
+}
+
+.movie-genre-container {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  align-items: center;
   padding-left: 1rem;
   color: black;
   font-size: 1.5em;
@@ -101,31 +128,15 @@
   }
 }
 
-.movie-genre-container {
-  width: 100%;
-  height: 5%;
+.genre-chip {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  padding-left: 1rem;
-  color: black;
-  font-size: 1.5em;
-
-  @media (min-width: 400px) {
-    font-size: 1rem;
-  }
-
-  @media (min-width: 640px) {
-    font-size: 0.25rem;
-  }
-  
-  @media (min-width: 768px) {
-    font-size: 0.5rem;
-  }
-  
-  @media (min-width: 1024px) {
-    font-size: 1rem;
-  }
+  justify-content: center;
+  margin-right: 5px;
+  border-radius: 50px;
+  border: 1px solid #555;
+  padding: 0.25rem 0.75rem;
+  white-space: nowrap;
 }
 
 .movie-rating-container {

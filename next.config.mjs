@@ -2,7 +2,7 @@
 const nextConfig = {
     reactStrictMode: true,
     images: {
-        domains: ['another-domain.com', 'example.com', 'mdbcdn.b-cdn.net', 'image.tmdb.org'],
+        remotePatterns: [{protocol:"https",hostname:'mdbcdn.b-cdn.net'}, {protocol:"https",hostname:'image.tmdb.org'}],
     },
 };
 
