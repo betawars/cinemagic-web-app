@@ -11,7 +11,7 @@ export default function Header() {
         setIsOpen(!isOpen);
     };
     return (
-        <nav className="bg-[#c7b9d9] p-4 sticky top-0 z-50">
+        <nav className="bg-[#c7b9d9] pt-4 pb-4 pl-10 pr-10 sticky top-0 z-50">
             <div id="nav-container" className="w-full mx-auto flex items-center">
                 <div id="app-icon-container" className=" w-full mx-auto flex justify-start items-center">
                     <Image

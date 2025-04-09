@@ -1,4 +1,4 @@
-import { fetchFromTMDB, fetchPopularMovies } from "@/lib/tmdb";
+import { fetchFromTMDB } from "@/lib/tmdb";
 import { Carousel } from "./(carousal)/Carousel";
 import NowShowing from "./nowShowing";
 import Popular from "./popular";
@@ -6,16 +6,31 @@ import TopRated from "./topRated";
 import { Suspense } from "react";
 import LoadingSpinner from "@/components/loadingSpinner";
 
-const endpoint = '/movie/popular';
+const popularEndpoint = '/movie/popular';
+const genreListEndpoint = '/genre/movie/list'
 
 async function MovieCarousel() {
-    const response = await fetchFromTMDB(endpoint);
+    const popularMovieResponse = await fetchFromTMDB(popularEndpoint);
+    const movieGenreResponse = await fetchFromTMDB(genreListEndpoint);
     
-    if (response.status === 'success') {
-        const data = response.data.results
-        return <Carousel data={data} />;
+    let movieData, genreData
+    let genreMap = {}
+    
+    if (popularMovieResponse.status === 'success') {
+        movieData = popularMovieResponse.data.results
     }
-    
+
+    if (movieGenreResponse.status === 'success') {
+        genreData = movieGenreResponse.data.genres
+        genreData.forEach(element => {
+            genreMap[element.id] = element.name
+        });
+    }
+
+    if (movieData || genreData){
+        return <Carousel movieData = {movieData} genreData = {genreMap}/>
+    }
+
     return <div className="text-red-500">Error loading movies</div>;
 }
 
