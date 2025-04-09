@@ -12,7 +12,7 @@ async function MovieCarousel() {
     const response = await fetchFromTMDB(endpoint);
     
     if (response.status === 'success') {
-        const data = response.data.results.map(e=>e.backdrop_path)
+        const data = response.data.results
         return <Carousel data={data} />;
     }
     
@@ -22,8 +22,8 @@ async function MovieCarousel() {
 export default function Landing(){
     
     return (
-        <div>
-            <div>
+        <div >
+            <div className="pl-20 pr-20">
                 <Suspense fallback={<LoadingSpinner />}>
                     <MovieCarousel />
                 </Suspense>

@@ -5,85 +5,45 @@ import styled from "styled-components";
 
 import "./Carousel.css";
 import Image from "next/image";
+import { ArrowLeft, ArrowRight } from "@/components/Arrows";
 
 export const Carousel = ({ data }) => {
-
-  console.log(data)
   const [slide, setSlide] = useState(0);
+  const [hovered, setHovered] = useState(false)
   const nextSlide = () => {
     setSlide(slide === data.length - 1 ? 0 : slide + 1);
   };
-
   const prevSlide = () => {
     setSlide(slide === 0 ? data.length - 1 : slide - 1);
   };
 
-  const arrow = `
-  position: absolute;
-  filter: drop-shadow(0px 0px 5px #555);
-  width: 2rem;
-  height: 2rem;
-  color: white;
-  &hover{
-    cursor:pointer
-  }
-  `
-  const arrow_left=`
-    left: 1rem;
-    z-index: 1;
-  `
-  const right=`
-    right: 1rem;
-  `
-
-  const Arrow_left = styled(BsArrowLeftCircleFill)`
-  position: absolute;
-  filter: drop-shadow(0px 0px 5px #555);
-  width: 2rem;
-  height: 2rem;
-  color: white;
-  cursor: pointer;
-  left: 1rem;
-  z-index: 1;
-  opacity: ${({ hover }) => (hover === "true" ? "1" : "0")};
-  transition: opacity 1s ease-in-out 0.1s;
-  `;
-
-  const Arrow_right = styled(BsArrowRightCircleFill)`
-  position: absolute;
-  filter: drop-shadow(0px 0px 5px #555);
-  width: 2rem;
-  height: 2rem;
-  color: white;
-  cursor: pointer;
-  right: 1rem;
-  z-index: 1;
-  opacity: ${({ hover }) => (hover === "true" ? "1" : "0")};
-  transition: opacity 1s ease-in-out 0.1s;
-  `;
-
-  const [hovered,setHovered] = useState(false)
-
   return (
     <div className="carousel"
-      onMouseEnter={()=>setHovered(true)}
-      onMouseLeave={()=>setHovered(false)}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
     >
-      <Arrow_left hover={hovered.toString()} onClick={prevSlide}/>
+      <ArrowLeft hover={hovered.toString()} onClick={prevSlide} />
       {data.map((item, idx) => {
+        const isVisible = slide === idx;
         return (
-          <Image
-            key={idx}
-            src={`https://image.tmdb.org/t/p/w780${item}`}
-            height={1000}
-            width={1000}
-            alt="car"
-            className={`slide ${slide === idx ? "slide-visible" : ""}`}
-          />
+          <div key={idx} className={`slide-wrapper ${isVisible ? "slide-visible" : ""}`}>
+            <div className="movie-title-container">
+              <h3>{item.original_title}</h3>
+            </div>
+            <div className="image-container">
+              <Image
+                src={`https://image.tmdb.org/t/p/w780${item.poster_path}`}
+                height={2000}
+                width={2000}
+                alt={item.original_title}
+                priority
+              />
+            </div>
+          </div>
         );
       })}
-      <Arrow_right hover={hovered.toString()} onClick={nextSlide}/>
-      <span className="indicators">
+      <ArrowRight hover={hovered.toString()} onClick={nextSlide} />
+      {/* <span className="indicators">
         {data.map((_, idx) => {
           return (
             <button
@@ -95,7 +55,7 @@ export const Carousel = ({ data }) => {
             ></button>
           );
         })}
-      </span>
+      </span> */}
     </div>
   );
 };
