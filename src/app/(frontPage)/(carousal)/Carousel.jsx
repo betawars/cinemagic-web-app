@@ -8,7 +8,6 @@ import { useRouter } from "next/navigation";
 import LoadingSpinner from "@/components/loadingSpinner";
 
 export const Carousel = ({ movieData, genreData }) => {
-  console.log(movieData)
   const [slide, setSlide] = useState(0);
   const [hovered, setHovered] = useState(false)
   const nextSlide = () => {

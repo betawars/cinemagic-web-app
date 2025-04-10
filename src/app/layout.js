@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { Providers } from "./providers";
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -21,14 +22,17 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className = "dark" suppressHydrationWarning>
+    <html lang="en" className="dark" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+
         <Providers>
-          <Header />
-          {children}
-          <Footer />
+          <AppRouterCacheProvider>
+            <Header />
+            {children}
+            <Footer />
+          </AppRouterCacheProvider>
         </Providers>
       </body>
     </html>
