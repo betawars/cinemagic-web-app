@@ -7,6 +7,7 @@ import TopRated from "./(movie strips)/topRated";
 const popularEndpoint = '/movie/popular';
 const nowPlayingEndpoint = '/movie/now_playing'
 const genreListEndpoint = '/genre/movie/list'
+const topRatedEndpoint = '/movie/top_rated'
 
 async function MovieCarousel() {
     const nowPlayingMoviesResponse = await fetchFromTMDB(nowPlayingEndpoint);
@@ -39,11 +40,36 @@ async function PopularMovieStrip(){
     if (popularMoviesResponse.status === 'success'){
         movieData = popularMoviesResponse.data.results
     }
-
     if (movieData){
         return <Popular movieData = {movieData}/>
     }
-    
+    return <div className="text-red-500">Error loading movies</div>;
+}
+
+async function TopRatedMovieStrip(){
+    const topRatedMovieResponse = await fetchFromTMDB(topRatedEndpoint)
+    let movieData
+    if (topRatedMovieResponse.status === 'success'){
+        movieData = topRatedMovieResponse.data.results
+    }
+    if (movieData){
+        console.log(movieData)
+        return <TopRated movieData = {movieData}/>
+    }
+    return <div className="text-red-500">Error loading movies</div>;
+}
+
+async function NowShowingMovieStrip(){
+    const nowShowingMovieResponse = await fetchFromTMDB(nowPlayingEndpoint)
+    let movieData
+    if (nowShowingMovieResponse.status === 'success'){
+        movieData = nowShowingMovieResponse.data.results
+    }
+    if (movieData){
+        console.log(movieData)
+        return <NowShowing movieData = {movieData}/>
+    }
+    return <div className="text-red-500">Error loading movies</div>;
 }
 
 export default function Landing(){
@@ -55,8 +81,8 @@ export default function Landing(){
             </div>
             <div className="w-full max-w-8xl mx-auto p-4 sm:p-6 md:p-10 flex flex-col gap-6">
                 <PopularMovieStrip/>
-                <NowShowing />
-                <TopRated />
+                <TopRatedMovieStrip/>
+                <NowShowingMovieStrip/>
             </div>
         </div>
       );

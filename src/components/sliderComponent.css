@@ -1,5 +1,3 @@
-.main{}
-
 .strip-title{
     font-size: xx-large;
     margin-bottom: 1.5rem;
@@ -9,10 +7,25 @@
     justify-content: space-between;
 }
 
-.strip-movies {
+/* .strip-movies {
     display: flex;
     flex-direction: row;
     gap: 0;
+} */
+
+.swiper-button-prev, .swiper-button-next {
+    position: absolute;
+    top: 50%;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.5); /* Optional: Add a background */
+    color: white;
+    border-radius: 50%;
+    cursor: pointer;
+    transform: translateY(-50%);
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .strip-movie-card{
