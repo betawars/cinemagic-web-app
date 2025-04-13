@@ -7,6 +7,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Navigation, Pagination } from 'swiper/modules';
 import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 
 export default function SliderComponent({ title, movieData }) {
 
@@ -15,11 +16,13 @@ export default function SliderComponent({ title, movieData }) {
         router.push(`/details/${id}`)
     }
 
+    const [hover,setHover] = useState(false)
+
     return (
         <div className='main'>
             <p className='strip-title'>{title}</p>
             <Swiper
-                spaceBetween={0}
+                spaceBetween={2}
                 slidesPerView={8}
                 //TODO: make this work
                 navigation={{
@@ -27,7 +30,7 @@ export default function SliderComponent({ title, movieData }) {
                     prevEl: '.swiper-button-prev'
                 }}
                 scrollbar={{ draggable: true, enabled: true }}
-                className='w-[100%]'
+                className='w-[100%] p-20'
                 breakpoints={{
                     320: {
                         slidesPerView: 1,
@@ -54,6 +57,7 @@ export default function SliderComponent({ title, movieData }) {
                         slidesPerView: 10,
                     }
                 }}
+                style={{padding:15}}
                 modules={[Pagination, Navigation]}
             >
 
@@ -65,11 +69,18 @@ export default function SliderComponent({ title, movieData }) {
                                     <div className='strip-movie-card-title'>
                                         <div>
                                             <p className='strip-movie-card-title-inner rotate'>{item.title}</p>
-                                            <p>{idx + 1}</p>
+                                            <p className='font-bold'>{idx + 1}</p>
                                         </div>
                                     </div>
-                                    <Card className='strip-movie-card-image' sx={{ minWidth: 200, maxWidth: 200, minHeight: 300, maxHeight: 300 }}>
-                                        <CardActionArea>
+                                    <Card
+                                        // className={hover?"strip-movie-card-image":""}
+                                        className="strip-movie-card-image"
+                                        sx={{ minWidth: 200, maxWidth: 200, minHeight: 300, maxHeight: 300 }}
+                                    >
+                                        <CardActionArea
+                                            onMouseEnter={()=>setHover(true)}
+                                            onMouseLeave={()=>setHover(false)}
+                                        >
                                             <Image
                                                 src={`https://image.tmdb.org/t/p/w780${item.poster_path}`}
                                                 height={1000}

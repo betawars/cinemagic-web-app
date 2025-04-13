@@ -1,4 +1,4 @@
-.strip-title{
+/*.strip-title{
     font-size: xx-large;
     margin-bottom: 1.5rem;
     width: 100%;
@@ -13,11 +13,11 @@
     gap: 0;
 } */
 
-.swiper-button-prev, .swiper-button-next {
+/*.swiper-button-prev, .swiper-button-next {
     position: absolute;
     top: 50%;
     z-index: 10;
-    background-color: rgba(0, 0, 0, 0.5); /* Optional: Add a background */
+    background-color: rgba(0, 0, 0, 0.5); 
     color: white;
     border-radius: 50%;
     cursor: pointer;
@@ -35,9 +35,14 @@
     
 }
 
+.strip-movie-card-image:hover{
+    transition: all .3s ease-in-out;
+    transform: scale(1.2);
+}
+
+
 .strip-movie-card-title {
 
-    /* width: 10%; */
     position: relative;
     margin: 0 15px;
 }
@@ -48,6 +53,103 @@
     top: 50%;
     left: 50%;
 
+}
+
+.rotate {
+    -moz-transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+    -webkit-transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+    transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+}*/
+
+.strip-title {
+    font-size: xx-large;
+    margin-bottom: 1.5rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.swiper-button-prev, .swiper-button-next {
+    position: absolute;
+    top: 50%;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border-radius: 50%;
+    cursor: pointer;
+    transform: translateY(-50%);
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Main container needs overflow visible */
+.main {
+    overflow: visible;
+}
+
+/* Make swiper allow overflow */
+.swiper {
+    
+    padding: 30px 0 30px 0px; /* Add padding to accommodate growth */
+}
+
+.swiper-slide {
+    overflow: visible !important;
+    transition: transform 0.3s ease; /* Add transition to all states */
+    z-index: 1; /* Default z-index */
+}
+
+.swiper-slide:hover {
+    z-index: 10; /* Higher z-index when hovered */
+}
+
+.strip-movie-card {
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    position: relative; /* Make it a positioning context */
+    transition: z-index 0.01s 0.3s;
+}
+
+.strip-movie-card:hover {
+    z-index: 1000; /* Very high z-index when hovered */
+    transition: z-index 0.01s; /* Apply z-index change immediately on hover */
+}
+
+/* .strip-movie-card-image {
+    transition: all 0.4s ease-in-out; 
+    transform-origin: center center; 
+}
+
+.strip-movie-card-image:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); 
+} */
+
+.strip-movie-card-image {
+    transition: transform 0.4s ease, box-shadow 0.4s ease; /* Smooth transition for all states */
+    will-change: transform; /* Performance optimization */
+}
+
+.strip-movie-card-image:hover {
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    position: relative; /* Ensure it's in a new stacking context */
+}
+
+.strip-movie-card-title {
+    position: relative;
+    margin: 0 15px;
+}
+
+.strip-movie-card-title-inner {
+    width: max-content;
+    position: absolute;
+    top: 50%;
+    left: 50%;
 }
 
 .rotate {
