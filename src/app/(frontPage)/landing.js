@@ -53,7 +53,6 @@ async function TopRatedMovieStrip(){
         movieData = topRatedMovieResponse.data.results
     }
     if (movieData){
-        console.log(movieData)
         return <TopRated movieData = {movieData}/>
     }
     return <div className="text-red-500">Error loading movies</div>;
@@ -66,7 +65,6 @@ async function NowShowingMovieStrip(){
         movieData = nowShowingMovieResponse.data.results
     }
     if (movieData){
-        console.log(movieData)
         return <NowShowing movieData = {movieData}/>
     }
     return <div className="text-red-500">Error loading movies</div>;

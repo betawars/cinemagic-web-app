@@ -6,9 +6,14 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Navigation, Pagination } from 'swiper/modules';
+import { useRouter } from 'next/navigation';
 
 export default function SliderComponent({ title, movieData }) {
 
+    const router = useRouter()
+    const onMovieClick = (id) => {
+        router.push(`/details/${id}`)
+    }
 
     return (
         <div className='main'>
@@ -55,7 +60,7 @@ export default function SliderComponent({ title, movieData }) {
                 {
                     movieData.map((item, idx) => {
                         return (
-                            <SwiperSlide key={idx}>
+                            <SwiperSlide key={idx} onClick={()=>onMovieClick(item.id)}>
                                 <div className='strip-movie-card'>
                                     <div className='strip-movie-card-title'>
                                         <div>
@@ -65,7 +70,6 @@ export default function SliderComponent({ title, movieData }) {
                                     </div>
                                     <Card className='strip-movie-card-image' sx={{ minWidth: 200, maxWidth: 200, minHeight: 300, maxHeight: 300 }}>
                                         <CardActionArea>
-
                                             <Image
                                                 src={`https://image.tmdb.org/t/p/w780${item.poster_path}`}
                                                 height={1000}
