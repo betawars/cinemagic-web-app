@@ -7,7 +7,6 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Navigation, Pagination } from 'swiper/modules';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
 
 export default function SliderComponent({ title, movieData }) {
 
@@ -15,8 +14,6 @@ export default function SliderComponent({ title, movieData }) {
     const onMovieClick = (id) => {
         router.push(`/details/${id}`)
     }
-
-    const [hover,setHover] = useState(false)
 
     return (
         <div className='main'>
@@ -77,10 +74,7 @@ export default function SliderComponent({ title, movieData }) {
                                         className="strip-movie-card-image"
                                         sx={{ minWidth: 200, maxWidth: 200, minHeight: 300, maxHeight: 300 }}
                                     >
-                                        <CardActionArea
-                                            onMouseEnter={()=>setHover(true)}
-                                            onMouseLeave={()=>setHover(false)}
-                                        >
+                                        <CardActionArea>
                                             <Image
                                                 src={`https://image.tmdb.org/t/p/w780${item.poster_path}`}
                                                 height={1000}

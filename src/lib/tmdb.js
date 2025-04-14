@@ -55,19 +55,3 @@ export async function fetchMovies(endpoint, params = {}) {
     error: response.error
   };
 }
-
-export async function fetchPopularMovies(params = {}) {
-  return fetchMovies('/movie/popular', params);
-}
-
-export async function fetchNowPlayingMovies(params = {}) {
-  return fetchMovies('/movie/now_playing', params);
-}
-
-export async function fetchTopRatedMovies(params = {}) {
-  return fetchMovies('/movie/top_rated', params);
-}
-
-export async function fetchUpcomingMovies(params = {}) {
-  return fetchMovies('/movie/upcoming', params);
-}
