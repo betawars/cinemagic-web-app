@@ -5,6 +5,18 @@
     flex-direction: row;
 }
 
+.details-background-image{
+    overflow: hidden;
+    position: absolute;
+    filter: blur(30px) grayscale(1);
+}
+
+.details-main-inner-container{
+    display: flex;
+    width: 100%;
+    z-index: 1;
+}
+
 .details-main-picture{
     width: 20%;
     display: flex;
@@ -14,11 +26,15 @@
 .details-main-info{
     width: 60%;
     display: flex;
-    justify-content: center;
 }
 .details-main-meta{
     width:20%;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.details-main-meta-inner{
+    height: 100%;
+    width: 100%;
+    background: rgba(255,255,255,.1);
 }
