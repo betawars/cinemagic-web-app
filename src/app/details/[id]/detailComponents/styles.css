@@ -8,6 +8,7 @@
 .details-background-image{
     overflow: hidden;
     position: absolute;
+    height: 90vh;
     filter: blur(30px) grayscale(1);
 }
 
@@ -24,17 +25,38 @@
 }
 
 .details-main-info{
-    width: 60%;
+    width: 50%;
     display: flex;
 }
 .details-main-meta{
-    width:20%;
+    width:30%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
 }
-.details-main-meta-inner{
-    height: 100%;
+.details-main-meta-overlay{
+    height: 95vh;
     width: 100%;
+    display: flex;
+    /* align-items: center; */
     background: rgba(255,255,255,.1);
+}
+
+.details-main-meta-inner{
+    display: flex;
+    flex-direction: column;
+    gap: 10;
+    height: fit-content;
+    width: 100%;
+}
+
+.details-main-genre-chip{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 5px;
+    border-radius: 50px;
+    border: 1px solid #555;
+    padding: 0.25rem 0.75rem;
+    white-space: nowrap;
 }

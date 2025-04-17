@@ -16,7 +16,7 @@ export default function MoviePoster({ src, alt }) {
         height={384}
         width={256}
         style={{ objectFit: "contain" }}
-        onLoadingComplete={() => setIsLoading(false)}
+        onLoad={() => setIsLoading(false)}
       />
     </div>
   )
