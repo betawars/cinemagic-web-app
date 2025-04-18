@@ -3,7 +3,6 @@ import MoviePoster from "./moviePoster"
 
 export default async function DetailsPage({ movieData }) {
 
-    console.log(movieData)
     return (
         <div className="details-main">
             <img
@@ -15,7 +14,7 @@ export default async function DetailsPage({ movieData }) {
             />
             <div className="details-main-inner-container">
                 <div className="details-main-picture">
-                    <div className="mt-20">
+                    <div className="mt-10 p-10">
                         <MoviePoster
                             src={`https://image.tmdb.org/t/p/w780${movieData.poster_path}`}
                             alt={movieData.title}
@@ -24,7 +23,7 @@ export default async function DetailsPage({ movieData }) {
                 </div>
                 <div className="details-main-info">
                     <div className="mt-20">
-                        <h2 className="text-5xl">{movieData.title}</h2>
+                        <h2 className="text-5xl sm:text-xl md:text-2xl lg:text-3xl xl:text-3xl 2xl:text-4xl">{movieData.title}</h2>
                         <div className="mt-5">
                             <button className="cursor-pointer bg-[#c7b9d9] hover:bg-[#69a5ef] text-white font-sans text-[15px] px-5 py-2 rounded-[28px] border border-[#b9a7d7] shadow-sm hover:shadow-md active:relative active:top-px">Watch Now</button>
                             <button className="cursor-pointer ml-3 bg-[#ffffff] hover:bg-[#69a5ef] text-black font-sans text-[15px] px-5 py-2 rounded-[28px] border border-[#b9a7d7] shadow-sm hover:shadow-md active:relative active:top-px">Add to list</button></div>
@@ -43,13 +42,13 @@ export default async function DetailsPage({ movieData }) {
                             })}</div>
                             <hr/>
                             <div className="flex flex-col gap-2"><p className="font-bold">Genres:</p>
-                                <p className="flex flex-row gap-1">{movieData.genres.map((e, idx) => {
+                                <div className="flex flex-row gap-1">{movieData.genres.map((e, idx) => {
                                     return (
                                         <div key={idx} className="details-main-genre-chip">
                                             {e.name}
                                         </div>
                                     )
-                                })}</p>
+                                })}</div>
                             </div>
                             <hr/>
                             <div className="inline-block"><p className="font-bold">Produced by:</p>{movieData.production_companies.map((e, idx) => 
